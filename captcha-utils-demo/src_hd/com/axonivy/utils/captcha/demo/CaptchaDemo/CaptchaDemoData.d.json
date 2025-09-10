@@ -1,0 +1,11 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "simpleName" : "CaptchaDemoData",
+  "namespace" : "com.axonivy.utils.captcha.demo.CaptchaDemo",
+  "isBusinessCaseData" : false,
+  "fields" : [ {
+    "name" : "bean",
+    "type" : "com.axonivy.utils.captcha.demo.bean.CaptchaBean",
+    "modifiers" : [ "PERSISTENT" ]
+  } ]
+}

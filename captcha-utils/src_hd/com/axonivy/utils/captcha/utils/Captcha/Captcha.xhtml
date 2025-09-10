@@ -1,0 +1,72 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+	xmlns:ic="http://ivyteam.ch/jsf/component"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+<cc:interface componentType="IvyComponent">
+	<cc:attribute name="captchaType" required="true" />
+
+	<cc:attribute name="captcha" />
+	<cc:attribute name="captchaValue" />
+	<cc:attribute name="regenerateCaptchaAction"
+		method-signature="void action()" />
+
+	<cc:attribute name="audioLink" />
+	<cc:attribute name="audioCaptchaValue" />
+	<cc:attribute name="regenerateAudioCaptchaAction"
+		method-signature="void action()" />
+
+	<cc:attribute name="checkCaptchaValueAction"
+		method-signature="void action()" />
+</cc:interface>
+
+<cc:implementation>
+	<p:outputPanel styleClass="text-center mt-5"
+		rendered="#{cc.attrs.captchaType eq 'Image'}">
+		<div class="flex align-items-center justify-content-center">
+			<p:graphicImage rendered="#{cc.attrs.captcha ne null}"
+				value="#{cc.attrs.captcha}" stream="false" />
+
+			<p:commandButton icon="pi pi-replay"
+				styleClass="ui-button-outlined ml-5"
+				actionListener="#{cc.attrs.regenerateCaptchaAction}" process="form"
+				update="form" />
+		</div>
+
+		<div class="text-center mt-3 ">
+			<p:outputLabel value="Type the word above" />
+			<br />
+			<p:inputText value="#{cc.attrs.captchaValue}" />
+		</div>
+	</p:outputPanel>
+
+	<p:outputPanel styleClass="text-center mt-5"
+		rendered="#{cc.attrs.captchaType eq 'Sound'}">
+		<div class="flex align-items-center justify-content-center">
+			<p:audio value="#{cc.attrs.audioLink}" player="mp3"
+				rendered="#{cc.attrs.audioLink ne null}" controls="true" />
+
+			<p:commandButton icon="pi pi-replay"
+				styleClass="ui-button-outlined ml-3"
+				actionListener="#{cc.attrs.regenerateAudioCaptchaAction}"
+				process="form" update="form" />
+		</div>
+
+		<div class="text-center mt-3">
+			<p:outputLabel value="Type the word above" />
+			<br />
+			<p:inputText value="#{cc.attrs.audioCaptchaValue}" />
+		</div>
+	</p:outputPanel>
+	
+	<div class="command-btns">
+		<p:commandButton value="Submit" process="form" update="form"
+			actionListener="#{cc.attrs.checkCaptchaValueAction}" />
+	</div>
+</cc:implementation>
+
+</html>
