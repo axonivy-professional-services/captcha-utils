@@ -15,7 +15,7 @@ The explanations under "MY-RRODUCT-NAME" are displayed  e.g. for the Connector A
 ## Demo
 
 - Generate image captcha based on:
-  - Dimentions (width, height)
+	- Dimentions (width, height)
 	- Content type like: numbers, latin characters,... captcha length
 	- Noise type like straight line, curve line,...
 	- Background like background type, color,... 
