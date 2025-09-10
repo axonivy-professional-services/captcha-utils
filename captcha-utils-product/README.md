@@ -35,6 +35,3 @@ No setup needed for this demo
 The entries under the heading "Setup" are filled in this tab, e.g. for the Connector A-Trust here: https://market.axonivy.com/a-trust#tab-setup. 
 -->
 
-```
-@variables.yaml@
-```
